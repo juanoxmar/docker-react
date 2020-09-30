@@ -1,9 +1,10 @@
-FROM node:alpine as builder
-WORKDIR '/app'
-COPY package.json .
-RUN yarn install
-COPY . .
-RUN yarn build
+FROM node:alpine
 
-FROM nginx
-COPY --from=builder /app/build /usr/share/nginx/html
+WORKDIR '/app'
+
+COPY package.json .
+COPY yarn.lock .
+RUN yarn install
+
+COPY . .
+CMD ["yarn", "start"]
