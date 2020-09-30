@@ -2,8 +2,10 @@ version: '3'
 
 services:
   web:
-    build: .
     image: joxmar/docker-react
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     ports:
       - '3000:3000'
     volumes:
@@ -11,7 +13,9 @@ services:
     stdin_open: true
 
   tests:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
     volumes:
       - .:/app
     command: ['yarn', 'test']

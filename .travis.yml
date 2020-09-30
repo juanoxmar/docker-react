@@ -4,7 +4,7 @@ services:
   - docker
 
 before_install:
-  - docker build -t joxmar/docker-react .
+  - docker build -t joxmar/docker-react -f Dockerfile.dev .
 
 script:
   - docker run -e CI=true joxmar/docker-react yarn test
