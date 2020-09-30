@@ -2,6 +2,7 @@ version: '3'
 
 services:
   web:
+    image: joxmar/docker-react
     build:
       context: .
       dockerfile: Dockerfile.dev
